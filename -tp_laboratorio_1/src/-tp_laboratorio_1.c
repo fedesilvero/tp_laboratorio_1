@@ -28,12 +28,15 @@ int main(void) {
 	int flagMultiplicacion = 0;
 	int flagFactorial = 0;
 
+	int flagValidacion1 = 0;
+	int flagValidacion2 = 0;
+
 	int seguir = 1;
 
 
 
-	// muestro al usuario las opciones del menu afuera del bucle para que se vean una sola vez.
-		printf("\n*Seleccione una opción: \n");
+		// muestro al usuario las opciones del menu afuera del bucle para que se vean una sola vez.
+		printf("\n*Seleccione una opción del menú: \n");
 
 		printf("\n 1. Ingresar 1er operando. \n");
 		printf("\n 2. Ingresar 2do operando. \n");
@@ -48,15 +51,15 @@ int main(void) {
 
 do{
 
-	// registro la opcion seleccionada por el usuario.
-	fflush(stdin);	// la escribo porque las opciones son de tipo char
+							// registro la opcion seleccionada por el usuario.
+	fflush(stdin);			// la escribo porque las opciones son de tipo char
 	scanf("%c", &opcion);	// la asigno a la variable opcion
 
 
 
 
 
-
+	// escribo un bloque de código para cada opcion que ingrese el usuario
 	switch (opcion){
 
 		case '1':
@@ -64,6 +67,8 @@ do{
 			printf("\nIngrese un número entero: \n");
 			scanf("%d", &a);
 			printf("\nUsted ingresó el número: %d .\n", a);
+			printf("\nSeleccione otra opción del menú para continuar...\n");
+			flagValidacion1 = 1;
 			break;
 
 
@@ -73,60 +78,123 @@ do{
 			printf("\nIngrese otro número entero: \n");
 			scanf("%d", &b);
 			printf("\nUsted ingresó el número: %d .\n", b);
+			printf("\nSeleccione otra opción del menú para continuar...\n");
+			flagValidacion2 = 1;
 			break;
 
 
 
 		case '3':
 
-
+		if (flagValidacion1 == 1 && flagValidacion2 == 1){		// si no ingrese ambos nº, dara error y no voy a dejar continuar
 			sumar (a, b, &resultadoSuma);
 			restar (a, b, &resultadoResta);
 			errorDivision = dividir(a, b, &resultadoDivision);
 			multiplicar (a, b, &resultadoMultiplicacion);
 			factorial (a, b, &resultadoFactorialA, &resultadoFactorialB, &errorFacmain1, &errorFacmain2);
 
+			printf("\nRealizó todas las operaciones...\n");
+			printf("\nSeleccione otra opción del menú para continuar...\n");
 
 			 flagSuma = 1;
 			 flagResta = 1;
 			 flagDivision = 1;
 			 flagMultiplicacion = 1;
 			 flagFactorial = 1;
+
+			}else {
+				printf("\nError. No se pueden realizar las operaciones si no se ingresaron los 2 números anteriormente. \n");
+			}
+
 			 break;
 
 
 			case 'a':	// calcular la suma (funciona)
 
-				sumar (a, b, &resultadoSuma);	// invoco la funcion suma
+				if (flagValidacion1 == 1 && flagValidacion2 == 1){
+				sumar (a, b, &resultadoSuma);
 				flagSuma = 1;
+
+				printf("\nRealizó una suma...\n");
+				printf("\nSeleccione otra opción del menú para continuar...\n");
+
+				}else {
+					printf("\nError. No se pueden realizar las operaciones si no se ingresaron los 2 números anteriormente. \n");
+				}
 				break;
 
 
 			case 'b':	// calcular la resta (funciona)
 
-				restar (a, b, &resultadoResta);		// invoco a la funcion restar
-				flagResta = 1;
+				if (flagValidacion1 == 1 && flagValidacion2 == 1){
+
+					restar (a, b, &resultadoResta);
+					flagResta = 1;
+
+					printf("\nRealizó una resta...\n");
+					printf("\nSeleccione otra opción del menú para continuar...\n");
+
+				}else {
+
+					printf("\nError. No se pueden realizar las operaciones si no se ingresaron los 2 números anteriormente. \n");
+				}
+
 				break;
 
 
-			case 'c':	// calcular la división
 
-				errorDivision = dividir(a, b, &resultadoDivision);
-				flagDivision = 1;
+
+			case 'c':	// calcular la división (funciona)
+
+				if (flagValidacion1 == 1 && flagValidacion2 == 1){
+
+					errorDivision = dividir(a, b, &resultadoDivision);
+					flagDivision = 1;
+
+					printf("\nRealizó una división...\n");
+					printf("\nSeleccione otra opción del menú para continuar...\n");
+
+				}else {
+
+					printf("\nError. No se pueden realizar las operaciones si no se ingresaron los 2 números anteriormente. \n");
+				}
+
 				break;
 
 
 			case 'd':		// calcular la multiplicacion (funciona)
 
-				multiplicar (a, b, &resultadoMultiplicacion);
-				flagMultiplicacion = 1;
+				if (flagValidacion1 == 1 && flagValidacion2 == 1){
+
+					multiplicar (a, b, &resultadoMultiplicacion);
+					flagMultiplicacion = 1;
+
+					printf("\nRealizó una multiplicación...\n");
+					printf("\nSeleccione otra opción del menú para continuar...\n");
+
+				}else {
+
+					printf("\nError. No se pueden realizar las operaciones si no se ingresaron los 2 números anteriormente. \n");
+				}
+
 				break;
 
 
 			case 'e':		// calcular el factorial (funciona)
 
-				factorial (a, b, &resultadoFactorialA, &resultadoFactorialB, &errorFacmain1, &errorFacmain2);
-				flagFactorial = 1;
+				if (flagValidacion1 == 1 && flagValidacion2 == 1){
+
+					factorial (a, b, &resultadoFactorialA, &resultadoFactorialB, &errorFacmain1, &errorFacmain2);
+					flagFactorial = 1;
+
+					printf("\nRealizó el factorial...\n");
+					printf("\nSeleccione otra opción del menú para continuar...\n");
+
+				}else {
+
+					printf("\nError. No se pueden realizar las operaciones si no se ingresaron los 2 números anteriormente. \n");
+				}
+
 				break;
 
 
@@ -134,56 +202,76 @@ do{
 
 		case '4':		// mostrar los resultados (funciona)
 
+	if (flagValidacion1 == 1 && flagValidacion2 == 1){
 
-		if(flagSuma){
-			printf("\n a)El resultado de A + B es: %d \n", resultadoSuma);
-		}
-
-
-		if (flagResta){
-			printf("\n b)El resultado de A - B: %d \n", resultadoResta);
-		}
+			if(flagSuma){	// valido que haya hecho la suma
+				printf("\n a)El resultado de A + B es: %d", resultadoSuma);
+			}
 
 
-		if (flagDivision){
-				if(errorDivision == 0){
-					printf("\n c)No se puede dividir por 0. \n");
-				}
-				else {
-					printf("\n c)El resultado de la division es: %.2f", resultadoDivision);
-				}
-		}
+
+			if (flagResta){	// valido que haya hecho la resta
+				printf("\n b)El resultado de A - B: %d", resultadoResta);
+			}
 
 
-		if(flagMultiplicacion){
-			printf("\n d)El resultado de la multiplicacion es: %d", resultadoMultiplicacion);
-		}
+
+			if (flagDivision){		// valido que haya hecho la division
+
+					if(errorDivision == 0){		// valido que no haya ingresado un 0
+
+						printf("\n c)No se puede dividir por 0.");
+					}
+					else {
+						printf("\n c)El resultado de la division es: %.2f", resultadoDivision);
+					}
+			}
 
 
-		if (flagFactorial == 1){
-				if(errorFacmain1 == 0){
-					printf("\n e.1)No se puede sacar el factor de 0 o de un número negativo. \n");
+			if(flagMultiplicacion){		// valido que haya hecho la multiplicacion
+				printf("\n d)El resultado de la multiplicacion es: %d", resultadoMultiplicacion);
+			}
 
-				} else  {
-							printf("\n e.1)El factorial de A es: %d ", resultadoFactorialA);
-						}
 
-				if(errorFacmain2 == 0){
-					printf("\n e.2)No se puede sacar el factor de 0 o de un número negativo. \n");
+			if (flagFactorial == 1){			// valido que haya hecho el factorial
 
-				} else {
-							printf("\n e.2)El factorial de B es: %d ", resultadoFactorialB);
-					   }
-		}
+
+					if(errorFacmain1 == 0){		// valido que no haya ingresado un 0
+
+						printf("\n e.1)No se puede sacar el factorial de 0 o de un número negativo.");
+
+					}
+					 else {
+							printf("\n e.1)El factorial de A es: %d", resultadoFactorialA);
+					}
+
+
+
+					if(errorFacmain2 == 0){
+
+						printf("\n e.2)No se puede sacar el factorial de 0 o de un número negativo.\n");
+
+					} else {
+							printf("\n e.2)El factorial de B es: %d \n", resultadoFactorialB);
+					}
+
+			}
+
 
 					 flagSuma = 0;
 					 flagResta = 0;
 					 flagDivision = 0;
 					 flagMultiplicacion = 0;
 					 flagFactorial = 0;
+					 printf("\nSeleccione otra opción del menú para continuar...\n");
+	}
 
+	else {
 
-		break;
+		printf("\nError. No se pueden mostrar las operaciones si no se ingresaron los 2 números anteriormente. \n");
+	}
+
+	break;
 
 
 
@@ -244,23 +332,5 @@ Deberán contemplarse los casos de error (división por cero, etc) OK
 
 
 Documentar todas las funciones OK
-
-
-
-Pasos:
-
-
-1-Declarar variables de tipo enteros (int A, int B, int resultado, int opcion).
-2-Usar un bucle del tipo entro una vez hasta que el usuario quiera, y que al seleccionar la opcion "salir" se rompa el bucle.
-
-4-Mostrar por pantalla todas las opciones del menu.
-5-Pedir al usuario el ingreso de una de las opciones.
-6-Crear un bloque de codigo para cada posible opcion elegida.
-7-Mostrar resultados cuando se seleccione la opcion "informar resultados".
-8-Pasar cada funcion a un archivo .h y otro .c
-9-Documentar para que sirve cada funcion en el archivo .h
-10-Declarar un flag para cada operacion y antes de mostrar los resultados preguntar; si pase por el flag lo muestro, si no no.
-   La razón de esto es para evitar mostrar la basura precargada en las variables.
-
 
 */
