@@ -79,10 +79,12 @@ int factorial (int numero1, int numero2 , int* pFactorial1, int* pFactorial2, in
 						}
 
 					*pFactorial1 = factorial1;
+					*errorFac1 = 1;
 
 				} else {
 					*errorFac1 = 0;
 				}
+
 
 
 
@@ -92,6 +94,7 @@ int factorial (int numero1, int numero2 , int* pFactorial1, int* pFactorial2, in
 						}
 
 					*pFactorial2 = factorial2;
+					*errorFac2 = 1;
 
 				} else {
 					*errorFac2 = 0;

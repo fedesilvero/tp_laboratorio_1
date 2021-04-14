@@ -92,9 +92,7 @@ do{
 			 flagDivision = 1;
 			 flagMultiplicacion = 1;
 			 flagFactorial = 1;
-
-
-			break;
+			 break;
 
 
 			case 'a':	// calcular la suma (funciona)
@@ -162,7 +160,7 @@ do{
 		}
 
 
-		if (flagFactorial){
+		if (flagFactorial == 1){
 				if(errorFacmain1 == 0){
 					printf("\n e.1)No se puede sacar el factor de 0 o de un número negativo. \n");
 
@@ -206,6 +204,7 @@ printf("\nMuchas gracias por haber usado esta calculadora.");
 
 	return 0;
 }
+
 
 
 /*
